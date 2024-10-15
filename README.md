@@ -212,3 +212,18 @@ target_link_libraries( bspline_opt
 
 ## Acknowledgements
   We use **NLopt** for non-linear optimization and use **LKH** for travelling salesman problem.
+
+
+## Build the docker iamge
+
+```
+docker build -t ghcr.io/dibuli/fuel:latest .
+```
+
+## Run the docker image
+
+```
+xhost +local:root
+
+docker run --gpus all --network host --env=DISPLAY --env=NVIDIA_DRIVER_CAPABILITIES=all --env=NVIDIA-VISIBLE_DEVICES=all --env=QT_X11_NO_MITSHM=1 -v /tmp/.X11-unit:/tmp/.X11-unix:rw --runtime=nvidia --privileged -it ghcr.io/dibuli/fuel:latest bash 
+```
